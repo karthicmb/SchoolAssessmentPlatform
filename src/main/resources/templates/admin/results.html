@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
@@ -49,6 +49,17 @@
                 <i class="bi bi-bar-chart-fill me-2"></i>Student Results
             </h4>
             <span class="badge bg-primary fs-6" th:text="${results.size()} + ' result(s)'">0 results</span>
+        </div>
+
+        <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-1"></i>
+            <span th:text="${successMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i>
+            <span th:text="${errorMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
 
         <!-- Empty state -->
@@ -102,10 +113,18 @@
                             <td class="text-center text-secondary fw-semibold" th:text="${result.skipped}">0</td>
                             <td class="text-muted small" th:text="${result.submittedAt}">-</td>
                             <td class="text-center">
-                                <a th:href="@{/student/exam/{eid}/review/{rid}(eid=${result.examId}, rid=${result.resultId})}"
-                                   class="btn btn-outline-primary btn-sm">
-                                    <i class="bi bi-eye me-1"></i>Review
-                                </a>
+                                <div class="d-flex gap-2 justify-content-center">
+                                    <a th:href="@{/student/exam/{eid}/review/{rid}(eid=${result.examId}, rid=${result.resultId})}"
+                                       class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-eye me-1"></i>Review
+                                    </a>
+                                    <button type="button" class="btn btn-outline-danger btn-sm"
+                                            th:data-result-id="${result.resultId}"
+                                            th:data-exam-title="${result.examTitle}"
+                                            onclick="confirmDelete(this.dataset.resultId, this.dataset.examTitle)">
+                                        <i class="bi bi-trash me-1"></i>Delete
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -121,6 +140,49 @@
         </div>
     </footer>
 
+    <!-- Hidden delete form (submitted by JS) -->
+    <form id="deleteResultForm" th:action="@{/admin/results/delete}" method="post" class="d-none">
+        <input type="hidden" name="resultId" id="deleteResultId">
+    </form>
+
+    <!-- Confirmation modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0 pt-4 px-4">
+                    <h5 class="modal-title fw-bold">
+                        <i class="bi bi-exclamation-triangle text-danger me-2"></i>Delete Result?
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body px-4">
+                    <p class="mb-1">Are you sure you want to delete the result for:</p>
+                    <p class="fw-semibold mb-1" id="deleteModalTitle"></p>
+                    <p class="text-muted small mb-0">This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer border-0 pt-0 pb-4 px-4">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x me-1"></i>Cancel
+                    </button>
+                    <button type="button" class="btn btn-danger px-4" onclick="submitDelete()">
+                        <i class="bi bi-trash me-1"></i>Yes, Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+    <script>
+        function confirmDelete(resultId, examTitle) {
+            document.getElementById('deleteResultId').value = resultId;
+            document.getElementById('deleteModalTitle').textContent = examTitle;
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
+        }
+
+        function submitDelete() {
+            document.getElementById('deleteResultForm').submit();
+        }
+    </script>
 </body>
 </html>

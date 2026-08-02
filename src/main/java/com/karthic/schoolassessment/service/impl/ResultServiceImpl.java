@@ -114,6 +114,16 @@ public class ResultServiceImpl implements ResultService {
         return storageService.readJson(resultFile, ExamResult.class);
     }
 
+    @Override
+    public void deleteResult(String resultId) throws IOException {
+        Path resultFile = resultPath.resolve(resultId + ".json");
+        if (!Files.exists(resultFile)) {
+            throw new java.nio.file.NoSuchFileException("Result not found: " + resultId);
+        }
+        Files.delete(resultFile);
+        log.info("Result deleted: resultId={}", resultId);
+    }
+
     private String calculateGrade(double percentage) {
         if (percentage >= 90) return "A+";
         if (percentage >= 80) return "A";

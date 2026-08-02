@@ -72,7 +72,7 @@ public class ExamController {
         ExamMetadata metadata = examService.getExam(examId);
 
         if (!sessionService.isExamActive(session) || !examId.equals(sessionService.getExamId(session))) {
-            sessionService.startExam(session, examId, metadata.getQuestionCount());
+            return "redirect:/student/exam/" + examId + "/start";
         }
 
         int totalPages = (int) Math.ceil((double) metadata.getQuestionCount() / questionsPerPage);

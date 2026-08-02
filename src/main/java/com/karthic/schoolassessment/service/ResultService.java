@@ -17,4 +17,6 @@ public interface ResultService {
     List<ExamResult> listResults() throws IOException;
 
     ExamResult getResult(String resultId) throws IOException;
+
+    void deleteResult(String resultId) throws IOException;
 }

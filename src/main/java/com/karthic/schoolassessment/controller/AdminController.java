@@ -173,6 +173,26 @@ public class AdminController {
     }
 
     // -------------------------------------------------------------------------
+    // Delete Result
+    // -------------------------------------------------------------------------
+
+    @PostMapping("/results/delete")
+    public String deleteResult(
+            @RequestParam String resultId,
+            @AuthenticationPrincipal UserDetails userDetails,
+            RedirectAttributes redirectAttributes) {
+        try {
+            resultService.deleteResult(resultId);
+            log.info("Result '{}' deleted by {}", resultId, userDetails.getUsername());
+            redirectAttributes.addFlashAttribute("successMessage", "Result deleted successfully.");
+        } catch (IOException e) {
+            log.error("Failed to delete result {}", resultId, e);
+            redirectAttributes.addFlashAttribute("errorMessage", "Failed to delete result. Please try again.");
+        }
+        return "redirect:/admin/results";
+    }
+
+    // -------------------------------------------------------------------------
     // Helpers
     // -------------------------------------------------------------------------
 

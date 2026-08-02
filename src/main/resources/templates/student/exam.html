@@ -65,14 +65,15 @@
             color: white;
         }
         .palette-btn {
-            width: 44px;
-            height: 44px;
-            font-size: 0.875rem;
+            width: 48px;
+            height: 48px;
+            font-size: 1rem;
+            font-weight: 600;
             padding: 0;
             border-radius: 0.5rem;
         }
         .exam-progress {
-            height: 8px;
+            height: 10px;
             border-radius: 0;
         }
     </style>
@@ -81,20 +82,20 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-dark bg-primary shadow-sm py-3">
-        <div class="container-fluid px-4">
+        <div class="container-lg px-3">
             <span class="navbar-brand fw-bold fs-5 text-truncate" style="max-width:45%;"
                   th:text="${exam.title}">Exam Title</span>
             <div class="d-flex align-items-center gap-3">
-                <span class="text-white">
+                <span class="text-white fw-semibold">
                     <i class="bi bi-check-circle me-1"></i>
                     <span id="answeredCountDisplay" th:text="${answeredCount}">0</span>
-                    <span class="opacity-75">/ <span th:text="${totalQuestions}">0</span></span>
+                    <span class="opacity-75 fw-normal">/ <span th:text="${totalQuestions}">0</span> answered</span>
                 </span>
                 <span th:if="${timerEnabled}" class="badge bg-warning text-dark fs-6 px-3 py-2" id="timerDisplay">
                     <i class="bi bi-stopwatch me-1"></i>
                     <span id="timerText">--:--</span>
                 </span>
-                <span th:unless="${timerEnabled}" class="badge bg-secondary py-2">No Timer</span>
+                <span th:unless="${timerEnabled}" class="badge bg-secondary fs-6 px-3 py-2">No Timer</span>
             </div>
         </div>
     </nav>
@@ -112,7 +113,7 @@
     <form th:action="@{/student/exam/{id}(id=${examId})}" method="post" id="examForm" class="flex-grow-1">
         <input type="hidden" name="currentPage" th:value="${currentPage}">
 
-        <div class="container-xl py-4">
+        <div class="container-lg py-4">
             <div class="row g-4">
 
                 <!-- Questions Column -->
@@ -132,7 +133,7 @@
                     </div>
 
                     <!-- Question Cards -->
-                    <div th:each="q : ${questions}" class="card border-0 shadow-sm mb-4 question-card">
+                    <div th:each="q : ${questions}" class="card border-0 shadow-sm mb-5 question-card">
                         <div class="card-body p-4">
 
                             <!-- Question number + text -->
