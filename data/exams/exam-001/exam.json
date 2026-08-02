@@ -1,0 +1,10 @@
+{
+  "examId" : "exam-001",
+  "title" : "Test 123",
+  "subject" : "Test",
+  "timerEnabled" : false,
+  "duration" : 60,
+  "createdAt" : "2026-08-02 13:24:36",
+  "class" : "6",
+  "questions" : 5
+}

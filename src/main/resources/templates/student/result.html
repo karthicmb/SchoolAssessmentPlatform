@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${result.examTitle} + ' - Result'">Result</title>
+    <link th:href="@{/webjars/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.min.css}" rel="stylesheet">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" th:href="@{/student/dashboard}">
+                <i class="bi bi-mortarboard-fill me-2"></i>School Assessment Platform
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span class="text-white small">
+                    <i class="bi bi-person-circle me-1"></i>
+                    <span th:text="${username}">student</span>
+                    <span class="badge bg-info text-dark ms-1">Student</span>
+                </span>
+                <form th:action="@{/logout}" method="post" class="mb-0">
+                    <button type="submit" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-box-arrow-right me-1"></i>Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-white border-bottom py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a th:href="@{/student/dashboard}" class="text-decoration-none">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a th:href="@{/student/results}" class="text-decoration-none">Result History</a>
+                    </li>
+                    <li class="breadcrumb-item active" th:text="${result.examTitle}">Result</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container py-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <!-- Grade Card -->
+                <div class="card border-0 shadow text-center mb-4">
+                    <div class="card-body py-4">
+                        <i class="bi bi-patch-check-fill text-primary" style="font-size:2.5rem;"></i>
+                        <h4 class="fw-bold mt-2 mb-1" th:text="${result.examTitle}">Exam Title</h4>
+                        <div class="text-muted small mb-3"
+                             th:text="${result.subject} + ' &bull; Class ' + ${result.studentClass}">
+                            Subject • Class
+                        </div>
+
+                        <!-- Grade badge -->
+                        <div class="display-4 fw-bold mb-1"
+                             th:classappend="${result.grade == 'A+' or result.grade == 'A'} ? 'text-success'
+                                           : (${result.grade == 'B'} ? 'text-primary'
+                                           : (${result.grade == 'F'} ? 'text-danger'
+                                           : 'text-warning'))"
+                             th:text="${result.grade}">A+</div>
+                        <div class="fs-5 text-muted" th:text="${result.percentage} + '%'">0%</div>
+                    </div>
+                </div>
+
+                <!-- Score breakdown -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-header bg-light fw-semibold">
+                        <i class="bi bi-bar-chart me-2"></i>Score Breakdown
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="row g-0 text-center">
+                            <div class="col-4 border-end py-3">
+                                <div class="fs-3 fw-bold text-success" th:text="${result.correct}">0</div>
+                                <div class="text-muted small">Correct</div>
+                            </div>
+                            <div class="col-4 border-end py-3">
+                                <div class="fs-3 fw-bold text-danger" th:text="${result.wrong}">0</div>
+                                <div class="text-muted small">Wrong</div>
+                            </div>
+                            <div class="col-4 py-3">
+                                <div class="fs-3 fw-bold text-secondary" th:text="${result.skipped}">0</div>
+                                <div class="text-muted small">Skipped</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent text-center text-muted small">
+                        Total: <strong th:text="${result.totalQuestions}">0</strong> questions &nbsp;|&nbsp;
+                        Submitted: <span th:text="${result.submittedAt}">-</span>
+                    </div>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body py-3 px-4">
+                        <div class="d-flex justify-content-between small text-muted mb-1">
+                            <span>Score</span>
+                            <span th:text="${result.correct} + ' / ' + ${result.totalQuestions}">0/0</span>
+                        </div>
+                        <div class="progress" style="height:10px;">
+                            <div class="progress-bar bg-success"
+                                 th:style="'width:' + ${result.percentage} + '%'"
+                                 th:attr="aria-valuenow=${result.percentage}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="d-flex gap-3 justify-content-center">
+                    <a th:href="@{/student/exam/{eid}/review/{rid}(eid=${result.examId}, rid=${result.resultId})}"
+                       class="btn btn-outline-primary">
+                        <i class="bi bi-eye me-2"></i>Review Answers
+                    </a>
+                    <a th:href="@{/student/dashboard}" class="btn btn-primary">
+                        <i class="bi bi-house me-2"></i>Back to Dashboard
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-top py-3 mt-auto">
+        <div class="container text-center text-muted small">
+            &copy; 2026 School Assessment Platform
+        </div>
+    </footer>
+
+    <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

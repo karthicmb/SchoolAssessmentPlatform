@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - School Assessment Platform</title>
+    <link th:href="@{/webjars/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.min.css}" rel="stylesheet">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" th:href="@{/admin/dashboard}">
+                <i class="bi bi-mortarboard-fill me-2"></i>School Assessment Platform
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span class="text-white small">
+                    <i class="bi bi-person-circle me-1"></i>
+                    <span th:text="${username}">admin</span>
+                    <span class="badge bg-warning text-dark ms-1">Admin</span>
+                </span>
+                <form th:action="@{/logout}" method="post" class="mb-0">
+                    <button type="submit" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-box-arrow-right me-1"></i>Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-white border-bottom py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a th:href="@{/admin/dashboard}" class="text-decoration-none">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Settings</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container py-4 flex-grow-1">
+
+        <h4 class="fw-bold text-primary mb-4">
+            <i class="bi bi-gear-fill me-2"></i>Settings
+        </h4>
+
+        <!-- Password feedback -->
+        <div th:if="${passwordSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <span th:text="${passwordSuccess}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <div th:if="${passwordError}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <span th:text="${passwordError}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Settings feedback -->
+        <div th:if="${settingsSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <span th:text="${settingsSuccess}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <div th:if="${settingsError}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <span th:text="${settingsError}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- ── Change Admin Password ── -->
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-light fw-semibold">
+                        <i class="bi bi-shield-lock me-2"></i>Change Admin Password
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/admin/settings/change-password}" method="post" autocomplete="off">
+                            <input type="hidden" name="targetUser" value="admin">
+
+                            <div class="mb-3">
+                                <label for="adminCurrentPassword" class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="adminCurrentPassword"
+                                       name="currentPassword" required autocomplete="current-password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="adminNewPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="adminNewPassword"
+                                       name="newPassword" required minlength="6" autocomplete="new-password">
+                                <div class="form-text">Minimum 6 characters.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="adminConfirmPassword" class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-control" id="adminConfirmPassword"
+                                       name="confirmPassword" required minlength="6" autocomplete="new-password">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-key me-2"></i>Update Admin Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Change Student Password ── -->
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-light fw-semibold">
+                        <i class="bi bi-person-lock me-2"></i>Change Student Password
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/admin/settings/change-password}" method="post" autocomplete="off">
+                            <input type="hidden" name="targetUser" value="student">
+                            <input type="hidden" name="currentPassword" value="">
+
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-control" value="student" readonly disabled>
+                                <div class="form-text">The admin sets the student password directly.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentNewPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="studentNewPassword"
+                                       name="newPassword" required minlength="6" autocomplete="new-password">
+                                <div class="form-text">Minimum 6 characters.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentConfirmPassword" class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-control" id="studentConfirmPassword"
+                                       name="confirmPassword" required minlength="6" autocomplete="new-password">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-key me-2"></i>Update Student Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Application Defaults ── -->
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-light fw-semibold">
+                        <i class="bi bi-sliders me-2"></i>Application Defaults
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/admin/settings/app-defaults}" method="post">
+                            <div class="row g-3 align-items-end">
+                                <div class="col-sm-4">
+                                    <label for="defaultExamDuration" class="form-label">
+                                        Default Exam Duration (minutes)
+                                    </label>
+                                    <input type="number" class="form-control" id="defaultExamDuration"
+                                           name="defaultExamDuration" min="1" max="300"
+                                           th:value="${settings.defaultExamDuration}" required>
+                                    <div class="form-text">Pre-filled value when uploading a new exam.</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="questionsPerPage" class="form-label">
+                                        Questions Per Page
+                                    </label>
+                                    <input type="number" class="form-control" id="questionsPerPage"
+                                           name="questionsPerPage" min="1" max="50"
+                                           th:value="${settings.questionsPerPage}" required>
+                                    <div class="form-text">Number of questions shown per exam page.</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="bi bi-save me-2"></i>Save Defaults
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-4">
+            <a th:href="@{/admin/dashboard}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="bg-white border-top py-3 mt-auto">
+        <div class="container text-center text-muted small">
+            &copy; 2026 School Assessment Platform
+        </div>
+    </footer>
+
+    <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

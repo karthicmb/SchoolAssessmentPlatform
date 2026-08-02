@@ -1,0 +1,28 @@
+{
+  "resultId" : "result-exam-001-1785344281393",
+  "examId" : "exam-001",
+  "examTitle" : "Sample Test",
+  "subject" : "Test Demo 1",
+  "studentClass" : "6",
+  "totalQuestions" : 5,
+  "correct" : 4,
+  "wrong" : 1,
+  "skipped" : 0,
+  "percentage" : 80.0,
+  "grade" : "A",
+  "submittedAt" : "2026-07-29 22:28:01",
+  "studentAnswers" : {
+    "1" : "4",
+    "2" : "Mars",
+    "3" : "Delhi",
+    "4" : "364",
+    "5" : "Pacific Ocean"
+  },
+  "correctAnswers" : {
+    "1" : "4",
+    "2" : "Mars",
+    "3" : "Delhi",
+    "4" : "366",
+    "5" : "Pacific Ocean"
+  }
+}

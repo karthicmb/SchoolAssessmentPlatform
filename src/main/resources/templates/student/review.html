@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${result.examTitle} + ' - Review'">Review</title>
+    <link th:href="@{/webjars/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.min.css}" rel="stylesheet">
+    <style>
+        .question-card { border-left-width: 4px !important; }
+        .option-pill {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            margin-bottom: 0.35rem;
+        }
+    </style>
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" th:href="@{/student/dashboard}">
+                <i class="bi bi-mortarboard-fill me-2"></i>School Assessment Platform
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a th:href="@{/student/result/{rid}(rid=${result.resultId})}"
+                   class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-arrow-left me-1"></i>Back to Result
+                </a>
+                <form th:action="@{/logout}" method="post" class="mb-0">
+                    <button type="submit" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-box-arrow-right me-1"></i>Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Summary bar -->
+    <div class="bg-white border-bottom py-2">
+        <div class="container d-flex flex-wrap gap-3 align-items-center">
+            <span class="fw-semibold" th:text="${result.examTitle}">Exam</span>
+            <span class="badge bg-success"><i class="bi bi-check-lg me-1"></i><span th:text="${result.correct}">0</span> Correct</span>
+            <span class="badge bg-danger"><i class="bi bi-x-lg me-1"></i><span th:text="${result.wrong}">0</span> Wrong</span>
+            <span class="badge bg-secondary"><i class="bi bi-dash me-1"></i><span th:text="${result.skipped}">0</span> Skipped</span>
+            <span class="ms-auto fw-semibold"
+                  th:classappend="${result.grade == 'A+' or result.grade == 'A'} ? 'text-success'
+                                 : (${result.grade == 'B'} ? 'text-primary'
+                                 : (${result.grade == 'F'} ? 'text-danger' : 'text-warning'))"
+                  th:text="${result.grade} + '  (' + ${result.percentage} + '%)'">A+ (100%)</span>
+        </div>
+    </div>
+
+    <div class="container py-4 flex-grow-1">
+
+        <div th:each="q : ${questions}"
+             th:with="studentAns=${result.studentAnswers.get(q.number())},
+                      correctAns=${result.correctAnswers.get(q.number())},
+                      isSkipped=${studentAns == null or #strings.isEmpty(studentAns)},
+                      isCorrect=${!isSkipped and studentAns == correctAns}"
+             th:class="${isCorrect}  ? 'card border-0 shadow-sm mb-3 question-card border-start border-success'
+                       : (${isSkipped} ? 'card border-0 shadow-sm mb-3 question-card border-start border-secondary'
+                       :                 'card border-0 shadow-sm mb-3 question-card border-start border-danger')">
+
+            <div class="card-body p-4">
+
+                <!-- Question header -->
+                <div class="d-flex align-items-start gap-2 mb-3">
+                    <span class="badge bg-primary flex-shrink-0 mt-1" th:text="${q.number()}">1</span>
+                    <p class="fw-semibold mb-0" th:text="${q.question()}">Question text</p>
+                    <span class="ms-auto flex-shrink-0">
+                        <span th:if="${isCorrect}"  class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Correct</span>
+                        <span th:if="${isSkipped}"  class="badge bg-secondary"><i class="bi bi-dash-circle me-1"></i>Skipped</span>
+                        <span th:unless="${isCorrect or isSkipped}" class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Wrong</span>
+                    </span>
+                </div>
+
+                <!-- Options in 2-column row layout -->
+                <div class="row g-2">
+                    <div class="col-sm-6"
+                         th:each="opt : ${#lists.toList({q.option1(), q.option2(), q.option3(), q.option4()})}"
+                         th:with="isCorrectOpt=${opt == correctAns},
+                                  isStudentOpt=${opt == studentAns}">
+                        <div class="d-flex align-items-center gap-2 p-2 rounded h-100"
+                             th:class="${isCorrectOpt} ? 'd-flex align-items-center gap-2 p-2 rounded h-100 bg-success bg-opacity-10 border border-success'
+                                      : (${isStudentOpt and !isCorrectOpt} ? 'd-flex align-items-center gap-2 p-2 rounded h-100 bg-danger bg-opacity-10 border border-danger'
+                                      : 'd-flex align-items-center gap-2 p-2 rounded h-100 bg-white border')">
+                            <i th:if="${isCorrectOpt}"                     class="bi bi-check-circle-fill text-success flex-shrink-0"></i>
+                            <i th:if="${isStudentOpt and !isCorrectOpt}"   class="bi bi-x-circle-fill text-danger flex-shrink-0"></i>
+                            <i th:unless="${isCorrectOpt or isStudentOpt}" class="bi bi-circle text-muted flex-shrink-0"></i>
+                            <span th:text="${opt}" class="flex-grow-1">Option</span>
+                            <span th:if="${isCorrectOpt and !isStudentOpt}" class="ms-auto badge bg-success flex-shrink-0">Correct</span>
+                            <span th:if="${isStudentOpt and !isCorrectOpt}" class="ms-auto badge bg-danger flex-shrink-0">Yours</span>
+                            <span th:if="${isCorrectOpt and isStudentOpt}"  class="ms-auto badge bg-success flex-shrink-0">Yours ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a th:href="@{/student/result/{rid}(rid=${result.resultId})}"
+               class="btn btn-outline-primary me-2">
+                <i class="bi bi-arrow-left me-1"></i>Back to Result
+            </a>
+            <a th:href="@{/student/dashboard}" class="btn btn-primary">
+                <i class="bi bi-house me-2"></i>Dashboard
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="bg-white border-top py-3 mt-auto">
+        <div class="container text-center text-muted small">
+            &copy; 2026 School Assessment Platform
+        </div>
+    </footer>
+
+    <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

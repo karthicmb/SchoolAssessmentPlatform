@@ -1,0 +1,9 @@
+[ {
+  "username" : "admin",
+  "encodedPassword" : "$2a$10$CNgezsVgcD14YcPLzSbR1OO3lcHXXwzlcQiVyNPYSiXvGxQT0gvFm",
+  "role" : "ROLE_ADMIN"
+}, {
+  "username" : "student",
+  "encodedPassword" : "$2a$10$F/n.QjEX9AT75ZR2dtkgpO4MIe8nQu.g3uS9qMnJBDguQinF4Ktlu",
+  "role" : "ROLE_STUDENT"
+} ]
