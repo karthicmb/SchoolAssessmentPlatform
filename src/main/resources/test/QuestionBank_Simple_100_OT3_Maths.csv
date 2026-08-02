@@ -1,0 +1,101 @@
+Question,Option1,Option2,Option3,Option4,CorrectAnswer
+What are whole numbers denoted by?,N,Z,W,Q,W
+Which of the following is the set of whole numbers?,"{1,2,3,4,...}","{0,1,2,3,4,...}","{...,-2,-1,0,1,2,...}","{0,2,4,6,...}","{0,1,2,3,4,...}"
+What is the smallest whole number?,1,-1,0,2,0
+"The counting numbers 1, 2, 3, ... are called:",Whole numbers,Integers,Natural numbers,Rational numbers,Natural numbers
+Which statement is correct about whole numbers?,Whole numbers are finite,Whole numbers are infinite,Whole numbers include negative numbers,Whole numbers start from 1,Whole numbers are infinite
+What is the successor of 989?,988,990,991,987,990
+The successor of a number is how much more than the number?,2 more,1 less,1 more,0 more,1 more
+What is the predecessor of 1001?,1002,999,1000,1003,1000
+The predecessor of a number is:,1 more than the number,2 less than the number,1 less than the number,2 more than the number,1 less than the number
+Which whole number does NOT have a predecessor?,1,2,0,10,0
+Which natural number does NOT have a predecessor?,0,2,1,3,1
+What is the successor of 1874?,1873,1875,1876,1872,1875
+What is the predecessor of 4321?,4322,4320,4319,4323,4320
+Which key point is correct about successors?,Some whole numbers do not have a successor,Every whole number has a successor,Only even whole numbers have successors,Only odd whole numbers have successors,Every whole number has a successor
+What is the successor of 999999?,999998,1000001,1000000,999997,1000000
+The number line is a method of representing numbers on a:,Circle,Curved line,Straight line,Dotted line,Straight line
+On a whole number line where is 0 located relative to 1?,To the right,To the left,At the same position,Above 1,To the left
+What is the unit distance on a number line?,Distance between 0 and 2,Distance between 0 and 1,Distance between 1 and 3,Distance between 0 and 10,Distance between 0 and 1
+Which instruments use whole number lines as their scale?,Thermometer and compass,Ruler and measuring tape,Protractor and set square,Compass and divider,Ruler and measuring tape
+To round a number to the nearest ten which digit do you look at?,Tens digit,Hundreds digit,Ones digit,Thousands digit,Ones digit
+If the ones digit is less than 5 when rounding to nearest ten you should:,Replace ones digit by 1,Increase tens digit by 1,Replace ones digit by 0 and keep other digits,Replace tens digit by 0,Replace ones digit by 0 and keep other digits
+If the ones digit is 5 or more when rounding to nearest ten you should:,Replace ones digit by 5,Increase tens digit by 1 and replace ones digit by 0,Keep the number as it is,Replace ones digit by 9,Increase tens digit by 1 and replace ones digit by 0
+To round a number to the nearest hundred which digit do you examine?,Ones digit,Hundreds digit,Tens digit,Thousands digit,Tens digit
+What is 2356 rounded to the nearest hundred?,2300,2350,2400,2000,2400
+What is 1249 rounded to the nearest hundred?,1300,1250,1200,1000,1200
+What does estimation mean?,Finding the exact answer,Making a rough guess,Rounding all digits to zero,Multiplying approximate values,Making a rough guess
+Estimate the sum of 267 + 132 to the nearest ten. What is the result?,390,410,400,380,400
+What does upward estimation mean?,Lower estimation,Exact estimation,Higher estimation,No estimation,Higher estimation
+Which operations make whole numbers satisfy the Closure Property?,Subtraction and Division,Addition and Multiplication,Subtraction and Addition,Multiplication and Division,Addition and Multiplication
+2 + 3 = 5. Which property does this example demonstrate?,Commutative,Closure,Associative,Distributive,Closure
+Which operations do NOT satisfy the Closure Property for whole numbers?,Addition and Multiplication,Addition and Subtraction,Subtraction and Division,Multiplication and Division,Subtraction and Division
+Which property states that a + b = b + a for whole numbers?,Associative,Closure,Distributive,Commutative,Commutative
+Which operations follow the Commutative Property for whole numbers?,Addition and Subtraction,Addition and Multiplication,Multiplication and Division,Subtraction and Division,Addition and Multiplication
+2 + 3 = 3 + 2 = 5. This is an example of:,Closure Property,Distributive Property,Commutative Property,Associative Property,Commutative Property
+For whole numbers a minus b is not equal to b minus a. This means subtraction is:,Commutative,Associative,Not commutative,Distributive,Not commutative
+Which property states that a + (b + c) = (a + b) + c?,Distributive,Commutative,Closure,Associative,Associative
+Which operations do NOT follow the Associative Property for whole numbers?,Addition and Multiplication,Subtraction and Division,Addition and Division,Multiplication and Subtraction,Subtraction and Division
+What is 2 + (3 + 4)?,8,10,9,7,9
+Which property is represented by a x (b + c) = ab + ac?,Commutative,Associative,Distributive,Closure,Distributive
+What is 6 x (5 + 7) using the distributive property?,68,72,66,78,72
+What is the identity element for addition of whole numbers?,1,-1,0,2,0
+When we add 0 to any whole number the result is:,0,1,-1,The same number,The same number
+What is the identity element for multiplication of whole numbers?,0,2,-1,1,1
+When we multiply any whole number by 1 we get:,0,2,The same number,A larger number,The same number
+"For any whole number a, what is a x 0?",a,1,-a,0,0
+What is the result of dividing a whole number by 0?,0,1,Infinity,Not defined,Not defined
+When zero is subtracted from a whole number the number:,Becomes zero,Doubles,Remains unchanged,Becomes negative,Remains unchanged
+What is the additive inverse of 2?,2,1/2,-2,0,-2
+Is the additive inverse of a whole number also a whole number?,Yes always,No because -a is not a whole number,Only for even numbers,Only for zero,No because -a is not a whole number
+The number 1/a is called the:,Additive inverse of a,Multiplicative inverse of a,Identity element of a,Successor of a,Multiplicative inverse of a
+"If 4 divides 16 exactly, then 4 is called:",A multiple of 16,A factor of 16,The predecessor of 16,The successor of 16,A factor of 16
+"If 4 is a factor of 16, then 16 is called:",A factor of 4,The successor of 4,A multiple of 4,The predecessor of 4,A multiple of 4
+What is the smallest factor of any number?,The number itself,2,0,1,1
+What is the largest factor of any number?,2,The number itself,0,1,The number itself
+Are the multiples of a given number finite or infinite?,Finite,Infinite,Always 10,Always 100,Infinite
+Every number is a multiple of:,2,0,1,10,1
+Which of the following is always true about factors?,Factors are always larger than the number,Factors are always smaller or equal to the number,Factors are always odd,Factors are always even,Factors are always smaller or equal to the number
+Which of the following is always true about multiples?,Multiples are always smaller than the number,Multiples are always equal to the number,Multiples are always larger or equal to the number,Multiples are always even,Multiples are always larger or equal to the number
+Numbers exactly divisible by 2 are called:,Prime numbers,Odd numbers,Composite numbers,Even numbers,Even numbers
+Which formula represents even numbers?,2n + 1,2n - 1,2n,n + 1,2n
+Numbers NOT divisible by 2 are called:,Prime numbers,Even numbers,Composite numbers,Odd numbers,Odd numbers
+Which formula represents odd numbers?,2n,2n + 2,2n plus or minus 1,n squared,2n plus or minus 1
+What is the result of Even + Even?,Odd,Even,Prime,Composite,Even
+What is the result of Even + Odd?,Even,Composite,Odd,Prime,Odd
+What is the result of Odd + Odd?,Odd,Prime,Even,Composite,Even
+What is the result of Even x Even?,Odd,Prime,Composite,Even,Even
+What is the result of Odd x Odd?,Even,Composite,Odd,Prime,Odd
+What is the formula for the sum of the first n even natural numbers?,n squared,n(n+1)/2,n(n+1),2n,n(n+1)
+What is the formula for the sum of the first n odd natural numbers?,n(n+1),n squared,2n,n(n+1)/2,n squared
+What is the formula for the sum of the first n natural numbers?,n squared,n(n+1),2n,n(n+1)/2,n(n+1)/2
+A prime number has exactly how many factors?,Three,More than two,Two,One,Two
+Which is the only even prime number?,4,6,2,8,2
+What is the number 1 classified as?,Prime,Composite,Neither prime nor composite,Even prime,Neither prime nor composite
+"Which are the first 10 prime numbers?","1,2,3,5,7,11,13,17,19,23","2,3,5,7,11,13,17,19,23,29","2,4,6,8,10,12,14,16,18,20","1,3,5,7,9,11,13,15,17,19","2,3,5,7,11,13,17,19,23,29"
+A composite number has:,Exactly two factors,Only one factor,More than two factors,No factors,More than two factors
+Which of the following is a composite number?,7,11,2,9,9
+Which are the only two consecutive prime numbers?,3 and 5,5 and 7,2 and 3,11 and 13,2 and 3
+Any whole number greater than 1 is either:,Even or odd,Positive or negative,Prime or composite,Factor or multiple,Prime or composite
+The process of writing a composite number as a product of prime factors is called:,Prime subtraction,Prime factorization,Factor addition,Composite division,Prime factorization
+"What are the prime factors of 30?","2, 5, 6","2, 3, 5","3, 5, 10","2, 15","2, 3, 5"
+What is 150 expressed as a product of prime factors?,2 x 3 x 5 x 5,2 x 5 x 15,3 x 50,6 x 25,2 x 3 x 5 x 5
+What is 144 expressed as a product of prime factors?,2 x 72,2 x 2 x 2 x 2 x 3 x 3,4 x 36,2 x 3 x 24,2 x 2 x 2 x 2 x 3 x 3
+If two prime numbers differ by 2 they are called:,Co-primes,Prime triplets,Twin primes,Composite primes,Twin primes
+Which of the following is a pair of twin primes?,2 and 5,3 and 7,5 and 7,2 and 4,5 and 7
+Two numbers that have only 1 as their common factor are called:,Twin primes,Co-primes,Prime triplets,Composite numbers,Co-primes
+Which of the following is a pair of co-primes?,4 and 8,6 and 9,4 and 9,6 and 12,4 and 9
+Which is the only prime triplet where consecutive primes differ by 2?,5 and 7 and 9,3 and 5 and 7,7 and 9 and 11,2 and 3 and 5,3 and 5 and 7
+"A number is divisible by 2 if its unit place digit is:","1, 3, 5, 7 or 9","0, 2, 4, 6 or 8",0 or 5,Any even digit except 0,"0, 2, 4, 6 or 8"
+A number is divisible by 3 if:,Its last digit is 3 or 9,Its last two digits are divisible by 3,The sum of its digits is divisible by 3,Its unit digit is 0 or 6,The sum of its digits is divisible by 3
+A number is divisible by 4 if:,The last digit is divisible by 4,The sum of its digits is divisible by 4,The last two digits are divisible by 4,The last three digits are divisible by 4,The last two digits are divisible by 4
+A number is divisible by 5 if its unit place ends with:,0 or 5,5 only,0 only,0 or 2,0 or 5
+A number is divisible by 6 if it is divisible by:,2 and 4,3 and 4,2 and 3,2 and 5,2 and 3
+To check divisibility by 9 you check if:,The last digit is 9,The sum of digits is divisible by 9,The last two digits are divisible by 9,The number is divisible by 3,The sum of digits is divisible by 9
+A number is divisible by 10 if its unit place is:,5,0 or 5,2,0,0
+A number is divisible by 8 if:,Its last digit is divisible by 8,Its last two digits are divisible by 8,Its last three digits are divisible by 8,The sum of its digits is divisible by 8,Its last three digits are divisible by 8
+To check divisibility by 11 which method is used?,Sum of all digits,Last digit doubled,Difference of sum of digits at odd and even places,Last two digits,Difference of sum of digits at odd and even places
+A number is divisible by 12 if it is divisible by:,3 and 6,4 and 6,3 and 4,2 and 6,3 and 4
+A number is divisible by 15 if it is divisible by:,3 and 7,5 and 7,3 and 5,5 and 6,3 and 5
+Which of the following numbers is divisible by 3?,124,131,123,125,123
+Which of the following numbers is divisible by 9?,127,135,142,148,135
