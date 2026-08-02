@@ -77,9 +77,10 @@
 
         <!-- Bootstrap Icons -->
         <dependency>
-            <groupId>org.webjars</groupId>
+            <groupId>org.webjars.npm</groupId>
             <artifactId>bootstrap-icons</artifactId>
             <version>1.11.3</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- WebJars Locator (version-free paths in templates) -->

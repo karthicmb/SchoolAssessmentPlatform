@@ -1,0 +1,28 @@
+{
+  "resultId" : "result-exam-001-1785660853162",
+  "examId" : "exam-001",
+  "examTitle" : "Test 123",
+  "subject" : "Test",
+  "studentClass" : "6",
+  "totalQuestions" : 5,
+  "correct" : 5,
+  "wrong" : 0,
+  "skipped" : 0,
+  "percentage" : 100.0,
+  "grade" : "A+",
+  "submittedAt" : "2026-08-02 14:24:13",
+  "studentAnswers" : {
+    "1" : "4",
+    "2" : "Mars",
+    "3" : "Delhi",
+    "4" : "366",
+    "5" : "Pacific Ocean"
+  },
+  "correctAnswers" : {
+    "1" : "4",
+    "2" : "Mars",
+    "3" : "Delhi",
+    "4" : "366",
+    "5" : "Pacific Ocean"
+  }
+}

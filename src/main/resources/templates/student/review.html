@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,7 +40,7 @@
 
     <!-- Summary bar -->
     <div class="bg-white border-bottom py-2">
-        <div class="container d-flex flex-wrap gap-3 align-items-center">
+        <div class="container-lg d-flex flex-wrap gap-3 align-items-center">
             <span class="fw-semibold" th:text="${result.examTitle}">Exam</span>
             <span class="badge bg-success"><i class="bi bi-check-lg me-1"></i><span th:text="${result.correct}">0</span> Correct</span>
             <span class="badge bg-danger"><i class="bi bi-x-lg me-1"></i><span th:text="${result.wrong}">0</span> Wrong</span>
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <div class="container py-4 flex-grow-1">
+    <div class="container-lg py-4 flex-grow-1">
 
         <div th:each="q : ${questions}"
              th:with="studentAns=${result.studentAnswers.get(q.number())},
@@ -114,7 +114,7 @@
     </div>
 
     <footer class="bg-white border-top py-3 mt-auto">
-        <div class="container text-center text-muted small">
+        <div class="container-lg text-center text-muted small">
             &copy; 2026 School Assessment Platform
         </div>
     </footer>
